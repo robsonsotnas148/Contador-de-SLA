@@ -1,0 +1,266 @@
+:root {
+    --primary-color: #007bff;
+    --primary-dark: #0056b3;
+    --background-light: #f0f2f5;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --label-color: #555;
+    --border-color: #ddd;
+    --focus-shadow: rgba(0, 123, 255, 0.25);
+    --result-bg: #e9f7fe;
+    --result-border: #b3e0ff;
+    --result-text: #2a6496;
+    --result-strong: #004085;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.sla-container {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+    border-top: 5px solid var(--primary-color);
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sla-container:hover {
+    transform: translateY(-3px);
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Alterado para coluna por padrão */
+    gap: 8px; /* Espaço menor entre label e input */
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 4px; /* Ajuste no espaçamento da label */
+    font-weight: 500;
+    color: var(--label-color);
+    font-size: 0.95em;
+}
+
+.input-group input[type="datetime-local"],
+.input-group input[type="time"],
+.input-group input[type="number"],
+.input-group input[type="text"] {
+    width: 100%; /* Ocupa 100% da largura */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input[type="datetime-local"]:focus,
+.input-group input[type="time"]:focus,
+.input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.input-group .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px; /* Ajuste no espaçamento */
+}
+
+.input-group .checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    transform: scale(1.2); /* Checkbox um pouco maior */
+    cursor: pointer;
+}
+        
+.input-group .checkbox-group label {
+    margin-bottom: 0; /* Remove margin-bottom para alinhar com checkbox */
+}
+
+.time-workday-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+}
+
+.time-workday-group input[type="time"] {
+    flex-grow: 1;
+    min-width: 120px; /* Garante que os campos de hora não fiquem muito pequenos */
+}
+
+.pause-fields-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px; /* Espaçamento da label */
+}
+
+.pause-fields-container input[type="number"] {
+    flex-grow: 1;
+    min-width: 80px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.15em;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.result {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: var(--result-bg);
+    border: 1px solid var(--result-border);
+    border-left: 5px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: var(--result-text);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.result strong {
+    color: var(--result-strong);
+    font-weight: 600;
+}
+
+.result hr {
+    border: 0;
+    height: 1px;
+    background: var(--result-border);
+    margin: 20px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    .sla-container {
+        margin: 0;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+            
+    .input-group {
+        gap: 6px;
+    }
+
+    .time-workday-group,
+    .pause-fields-container {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .time-workday-group input,
+    .pause-fields-container input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .time-workday-group span,
+    .pause-fields-container span {
+        display: block; /* Para que 'às' e 'horas/minutos' fiquem em nova linha */
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6em;
+    }
+    .sla-container {
+        padding: 15px;
+    }
+    .result {
+        padding: 15px;
+        font-size: 0.95em;
+    }
+}

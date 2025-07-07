@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de SLA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sla-container">
+        <h1>Contador de SLA</h1>
+
+        <div class="input-group">
+            <label for="startDateTime">Data e Hora de Início do Ticket:</label>
+            <input type="datetime-local" id="startDateTime">
+        </div>
+
+        <div class="input-group">
+            <label>Jornada de Trabalho:</label>
+            <div class="time-workday-group">
+                <input type="time" id="workdayStart" value="09:00" class="time-input">
+                <span>às</span>
+                <input type="time" id="workdayEnd" value="18:00" class="time-input">
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="includeWeekends">
+                <label for="includeWeekends">Contabilizar Finais de Semana</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="holidays">Feriados (separados por vírgula, no formato AAAA-MM-DD):</label>
+            <textarea id="holidays" placeholder="Ex: 2025-01-01, 2025-04-21"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label for="slaHours">SLA (em horas):</label>
+            <input type="number" id="slaHours" min="0" value="8" class="number-input">
+        </div>
+
+        <div class="input-group">
+            <label for="pauseHours">Tempo de Pausa no Ticket:</label>
+            <div class="pause-fields-container">
+                <input type="number" id="pauseHours" min="0" value="0" class="number-input" placeholder="Horas">
+                <span>horas</span>
+                <input type="number" id="pauseMinutes" min="0" value="0" class="number-input" placeholder="Minutos">
+                <span>minutos</span>
+            </div>
+        </div>
+
+        <button onclick="calculateSLA()">Calcular SLA</button>
+
+        <div id="result" class="result" style="display: none;">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
